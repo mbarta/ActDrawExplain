@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+ext {
+    VERSION_CODE = 1
+    VERSION_NAME = "0.1.0"
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "me.barta.actdrawexplain"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode VERSION_CODE
+        versionName "${VERSION_NAME}"
+        setProperty("archivesBaseName", "stayintouch-${VERSION_NAME}")
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en"
+
+        lintOptions {
+            checkReleaseBuilds true
+            abortOnError false
+        }
+
+        dataBinding {
+            enabled = true
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            zipAlignEnabled true
+            jniDebuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug-${getGitHash()}"
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+
+    // Android
+    compile "com.android.support:appcompat-v7:$support_lib_version"
+
+    // Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // Views
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // RxJava & RxAndroid
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.9'
+    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
+
+    // Graphics
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    // Logging
+    compile 'com.jakewharton.timber:timber:4.5.1'
+}
