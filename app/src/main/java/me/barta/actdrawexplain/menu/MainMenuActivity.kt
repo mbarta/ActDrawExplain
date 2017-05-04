@@ -2,12 +2,12 @@ package me.barta.actdrawexplain.menu
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import me.barta.actdrawexplain.R
 import me.barta.actdrawexplain.databinding.ActivityMainMenuBinding
+import me.barta.actdrawexplain.di.activity.ViewModelActivity
 
-class MainMenuActivity : AppCompatActivity() {
+class MainMenuActivity : ViewModelActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,10 @@ class MainMenuActivity : AppCompatActivity() {
 
     private fun setUpBinding() {
         val binding = DataBindingUtil.setContentView<ActivityMainMenuBinding>(this, R.layout.activity_main_menu)
-        val viewModel = MainMenuViewModel()
-        binding.viewModel = viewModel
+        binding.viewModel = viewModel as MainMenuViewModel?
+    }
+
+    override fun createViewModel() : MainMenuViewModel {
+        return MainMenuViewModel(activityComponent)
     }
 }
