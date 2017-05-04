@@ -15,7 +15,7 @@ class ActivityModule(private val activity: ViewModelActivity) {
 
     @Provides
     @PerActivity
-    internal fun provideAttachedActivity(): AttachedActivity {
+    fun provideAttachedActivity(): AttachedActivity {
         return AttachedViewModelActivity(activity)
     }
 }

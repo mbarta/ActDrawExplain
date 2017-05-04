@@ -10,11 +10,11 @@ import javax.inject.Singleton
  */
 
 @Module
-class AppModule(private val appContext : Context) {
+class AppModule(val appContext : Context) {
 
-    @Provides
-    @Singleton
     @AppContext
+    @Singleton
+    @Provides
     fun provideAppContext() : Context {
         return appContext
     }

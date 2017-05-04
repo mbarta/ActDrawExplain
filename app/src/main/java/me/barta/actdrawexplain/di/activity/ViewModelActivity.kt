@@ -12,10 +12,10 @@ import me.barta.actdrawexplain.di.viewmodel.ViewModel
  * Created by milan on 5/3/17.
  */
 
-class ViewModelActivity : AppCompatActivity() {
+open class ViewModelActivity : AppCompatActivity() {
 
     lateinit var activityComponent : ActivityComponent
-    private var viewModel : ViewModel? = null
+    lateinit var viewModel : ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +28,10 @@ class ViewModelActivity : AppCompatActivity() {
                 .activityModule(ActivityModule(this))
                 .build()
 
-        viewModel = createViewModel()
+        viewModel = createViewModel()!!
     }
 
-    fun createViewModel(): ViewModel? {
+    open fun createViewModel(): ViewModel? {
         return null
     }
 }
