@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(AppModule::class))
 interface AppComponent {
 
-    @AppContext
     fun appContext(): Context
 
     fun inject(viewModelActivity: ViewModelActivity)

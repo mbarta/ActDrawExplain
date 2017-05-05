@@ -19,7 +19,7 @@ class ActDrawExplainApp : Application() {
         Timber.plant(Timber.DebugTree())
 
         appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
+                .appModule(AppModule(applicationContext))
                 .build()
     }
 }

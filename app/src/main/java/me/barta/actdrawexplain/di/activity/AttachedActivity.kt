@@ -8,4 +8,5 @@ import android.app.Activity
 
 interface AttachedActivity {
     fun startActivity(activityClass: Class<out Activity>)
+    fun finish()
 }

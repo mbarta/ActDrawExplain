@@ -7,4 +7,8 @@ import me.barta.actdrawexplain.di.viewmodel.ViewModel
  * Created by milan on 5/2/17.
  */
 class MainMenuViewModel(activityComponent: ActivityComponent) : ViewModel(activityComponent) {
+
+    fun onExitClicked() {
+        attachedActivity.finish()
+    }
 }
