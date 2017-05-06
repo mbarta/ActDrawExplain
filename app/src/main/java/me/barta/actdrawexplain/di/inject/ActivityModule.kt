@@ -7,7 +7,7 @@ import me.barta.actdrawexplain.di.activity.AttachedViewModelActivity
 import me.barta.actdrawexplain.di.activity.ViewModelActivity
 
 /**
- * Created by milan on 5/3/17.
+ * Activity module provides AttachedActivity objects for dependency injection.
  */
 
 @Module

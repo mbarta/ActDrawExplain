@@ -7,7 +7,7 @@ import me.barta.actdrawexplain.di.inject.DaggerAppComponent
 import timber.log.Timber
 
 /**
- * Created by milan on 5/3/17.
+ * Custom Application implementation.
  */
 
 class ActDrawExplainApp : Application() {

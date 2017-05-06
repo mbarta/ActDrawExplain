@@ -7,7 +7,8 @@ import me.barta.actdrawexplain.di.inject.ActivityComponent
 import javax.inject.Inject
 
 /**
- * Created by milan on 5/4/17.
+ * Base ViewModel implementation.
+ * Takes care of dependency injection.
  */
 
 open class ViewModel(val activityComponent: ActivityComponent) : BaseObservable() {

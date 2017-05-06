@@ -10,7 +10,8 @@ import me.barta.actdrawexplain.di.inject.ActivityComponent
 import me.barta.actdrawexplain.di.viewmodel.ViewModel
 
 /**
- * Created by milan on 5/3/17.
+ * Base Fragment implementation.
+ * Takes care of setting up dependency injection.
  */
 
 abstract class ViewModelFragment : Fragment() {

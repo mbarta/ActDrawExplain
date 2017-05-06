@@ -5,7 +5,7 @@ import me.barta.actdrawexplain.di.viewmodel.ViewModel
 import me.barta.actdrawexplain.menu.MainMenuViewModel
 
 /**
- * Created by milan on 5/3/17.
+ * Activity component for injection of Activities.
  */
 
 @PerActivity

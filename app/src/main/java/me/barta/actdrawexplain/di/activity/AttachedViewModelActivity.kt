@@ -5,8 +5,8 @@ import android.content.Intent
 import java.lang.ref.WeakReference
 
 /**
- * Created by milan on 5/3/17.
- */
+* Implementation of AttachedActivity interface for interaction with Activities from ViewModels
+*/
 
 class AttachedViewModelActivity(activity: ViewModelActivity) : AttachedActivity {
 

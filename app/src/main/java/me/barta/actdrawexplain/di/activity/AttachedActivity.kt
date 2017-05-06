@@ -3,7 +3,7 @@ package me.barta.actdrawexplain.di.activity
 import android.app.Activity
 
 /**
- * Created by milan on 5/3/17.
+ * Interface for interaction with Activities from ViewModels
  */
 
 interface AttachedActivity {

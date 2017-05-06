@@ -8,7 +8,7 @@ import me.barta.actdrawexplain.menu.MainMenuActivity
 import javax.inject.Singleton
 
 /**
- * Created by milan on 5/3/17.
+ * AppComponent for injecting application context.
  */
 
 @Singleton

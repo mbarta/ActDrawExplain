@@ -6,7 +6,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * Created by milan on 5/3/17.
+ * Activity module provides Application Context for dependency injection.
  */
 
 @Module
