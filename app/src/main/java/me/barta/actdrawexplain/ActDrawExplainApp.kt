@@ -1,13 +1,13 @@
 package me.barta.actdrawexplain
 
 import android.app.Application
-import me.barta.actdrawexplain.di.inject.AppComponent
-import me.barta.actdrawexplain.di.inject.AppModule
-import me.barta.actdrawexplain.di.inject.DaggerAppComponent
+import me.barta.actdrawexplain.inject.inject.AppComponent
+import me.barta.actdrawexplain.inject.inject.AppModule
+import me.barta.actdrawexplain.inject.inject.DaggerAppComponent
 import timber.log.Timber
 
 /**
- * Created by milan on 5/3/17.
+ * Custom Application implementation.
  */
 
 class ActDrawExplainApp : Application() {
@@ -19,7 +19,7 @@ class ActDrawExplainApp : Application() {
         Timber.plant(Timber.DebugTree())
 
         appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
+                .appModule(AppModule(applicationContext))
                 .build()
     }
 }

@@ -1,16 +1,17 @@
-package me.barta.actdrawexplain.di.fragment
+package me.barta.actdrawexplain.inject.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
 
 import me.barta.actdrawexplain.ActDrawExplainApp
-import me.barta.actdrawexplain.di.activity.ViewModelActivity
-import me.barta.actdrawexplain.di.inject.ActivityComponent
-import me.barta.actdrawexplain.di.viewmodel.ViewModel
+import me.barta.actdrawexplain.inject.activity.ViewModelActivity
+import me.barta.actdrawexplain.inject.inject.ActivityComponent
+import me.barta.actdrawexplain.inject.viewmodel.ViewModel
 
 /**
- * Created by milan on 5/3/17.
+ * Base Fragment implementation.
+ * Takes care of setting up dependency injection.
  */
 
 abstract class ViewModelFragment : Fragment() {

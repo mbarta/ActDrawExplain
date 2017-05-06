@@ -1,11 +1,12 @@
-package me.barta.actdrawexplain.di.activity
+package me.barta.actdrawexplain.inject.activity
 
 import android.app.Activity
 
 /**
- * Created by milan on 5/3/17.
+ * Interface for interaction with Activities from ViewModels
  */
 
 interface AttachedActivity {
     fun startActivity(activityClass: Class<out Activity>)
+    fun finish()
 }

@@ -1,4 +1,4 @@
-package me.barta.actdrawexplain.di.inject
+package me.barta.actdrawexplain.inject.inject
 
 import android.content.Context
 import dagger.Module
@@ -6,13 +6,12 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * Created by milan on 5/3/17.
+ * Activity module provides Application Context for dependency injection.
  */
 
 @Module
 class AppModule(val appContext : Context) {
 
-    @AppContext
     @Singleton
     @Provides
     fun provideAppContext() : Context {

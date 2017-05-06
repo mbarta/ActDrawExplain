@@ -1,9 +1,9 @@
-package me.barta.actdrawexplain.di.inject
+package me.barta.actdrawexplain.inject.inject
 
 import javax.inject.Scope
 
 /**
- * Created by milan on 5/3/17.
+ * Activity lifecycle scope.
  */
 
 @Scope
