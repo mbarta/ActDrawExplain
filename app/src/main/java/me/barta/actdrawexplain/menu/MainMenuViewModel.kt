@@ -1,7 +1,7 @@
 package me.barta.actdrawexplain.menu
 
-import me.barta.actdrawexplain.di.inject.ActivityComponent
-import me.barta.actdrawexplain.di.viewmodel.ViewModel
+import me.barta.actdrawexplain.inject.inject.ActivityComponent
+import me.barta.actdrawexplain.inject.viewmodel.ViewModel
 
 /**
  * View model for the main menu screen.

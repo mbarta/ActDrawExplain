@@ -1,4 +1,4 @@
-package me.barta.actdrawexplain.di.inject
+package me.barta.actdrawexplain.inject.inject
 
 import android.content.Context
 import dagger.Module

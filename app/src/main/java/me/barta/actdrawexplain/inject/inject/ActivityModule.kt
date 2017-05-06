@@ -1,10 +1,10 @@
-package me.barta.actdrawexplain.di.inject
+package me.barta.actdrawexplain.inject.inject
 
 import dagger.Module
 import dagger.Provides
-import me.barta.actdrawexplain.di.activity.AttachedActivity
-import me.barta.actdrawexplain.di.activity.AttachedViewModelActivity
-import me.barta.actdrawexplain.di.activity.ViewModelActivity
+import me.barta.actdrawexplain.inject.activity.AttachedActivity
+import me.barta.actdrawexplain.inject.activity.AttachedViewModelActivity
+import me.barta.actdrawexplain.inject.activity.ViewModelActivity
 
 /**
  * Activity module provides AttachedActivity objects for dependency injection.

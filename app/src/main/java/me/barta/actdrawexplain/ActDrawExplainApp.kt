@@ -1,9 +1,9 @@
 package me.barta.actdrawexplain
 
 import android.app.Application
-import me.barta.actdrawexplain.di.inject.AppComponent
-import me.barta.actdrawexplain.di.inject.AppModule
-import me.barta.actdrawexplain.di.inject.DaggerAppComponent
+import me.barta.actdrawexplain.inject.inject.AppComponent
+import me.barta.actdrawexplain.inject.inject.AppModule
+import me.barta.actdrawexplain.inject.inject.DaggerAppComponent
 import timber.log.Timber
 
 /**
