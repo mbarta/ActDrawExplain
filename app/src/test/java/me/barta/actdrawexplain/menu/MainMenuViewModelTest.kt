@@ -1,6 +1,6 @@
 package me.barta.actdrawexplain.menu
 
-import me.barta.actdrawexplain.inject.BaseTest
+import me.barta.actdrawexplain.common.BaseTest
 import org.junit.Test
 import org.mockito.Mockito
 

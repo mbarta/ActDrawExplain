@@ -1,1 +1,1 @@
-include ':app', ':datamodel'
+include ':app'

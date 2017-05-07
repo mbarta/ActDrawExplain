@@ -3,9 +3,9 @@ package me.barta.actdrawexplain
 import android.app.Application
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import me.barta.actdrawexplain.inject.inject.AppComponent
-import me.barta.actdrawexplain.inject.inject.AppModule
-import me.barta.actdrawexplain.inject.inject.DaggerAppComponent
+import me.barta.actdrawexplain.common.inject.AppComponent
+import me.barta.actdrawexplain.common.inject.AppModule
+import me.barta.actdrawexplain.common.inject.DaggerAppComponent
 import timber.log.Timber
 
 /**

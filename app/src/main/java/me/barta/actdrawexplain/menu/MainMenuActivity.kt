@@ -4,7 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import me.barta.actdrawexplain.R
 import me.barta.actdrawexplain.databinding.ActivityMainMenuBinding
-import me.barta.actdrawexplain.inject.activity.ViewModelActivity
+import me.barta.actdrawexplain.common.activity.ViewModelActivity
 
 /**
  * Activity for the main menu screen.

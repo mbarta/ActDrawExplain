@@ -5,4 +5,11 @@
     <string name="main_menu_play">Play</string>
     <string name="main_menu_customize_decks">Customize Decks</string>
     <string name="main_menu_exit">Exit</string>
+
+    <!--Select decks activity-->
+    <string name="deck_select_title">Select decks</string>
+    <string name="deck_select_select_all">Select all</string>
+    <string name="deck_select_select_none">Select none</string>
+    <string name="deck_select_next">Next</string>
+    <string name="deck_select_back">Back</string>
 </resources>
