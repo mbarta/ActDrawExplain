@@ -8,6 +8,10 @@ import me.barta.actdrawexplain.common.viewmodel.ViewModel
  */
 class MainMenuViewModel(activityComponent: ActivityComponent) : ViewModel(activityComponent) {
 
+    override fun inject() {
+        activityComponent.inject(this)
+    }
+
     fun onPlayClicked() {
         attachedActivity.startActivity(DeckSelectActivity::class.java)
     }

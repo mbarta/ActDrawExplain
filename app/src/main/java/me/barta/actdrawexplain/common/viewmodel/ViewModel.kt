@@ -11,7 +11,7 @@ import javax.inject.Inject
  * Takes care of dependency injection.
  */
 
-open class ViewModel(val activityComponent: ActivityComponent) : BaseObservable() {
+abstract class ViewModel(val activityComponent: ActivityComponent) : BaseObservable() {
 
     @Inject
     lateinit var appContext: Context
@@ -23,7 +23,5 @@ open class ViewModel(val activityComponent: ActivityComponent) : BaseObservable(
         inject()
     }
 
-    fun inject() {
-        activityComponent.inject(this)
-    }
+    abstract fun inject()
 }
