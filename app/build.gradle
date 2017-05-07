@@ -81,6 +81,8 @@ dependencies {
 
     // Android
     compile "com.android.support:appcompat-v7:$support_lib_version"
+    compile "com.android.support:recyclerview-v7:$support_lib_version"
+    //compile "com.android.support:cardview-v7:$support_lib_version"
     kapt "com.android.databinding:compiler:$gradle_version"
 
     // Kotlin
