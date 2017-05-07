@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--<variable name="viewModel" type="me.barta.actdrawexplain.menu.MainMenuViewModel"/>-->
+        <variable name="viewModel" type="me.barta.actdrawexplain.menu.DeckSelectViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="me.barta.actdrawexplain.menu.MainMenuActivity">
+        tools:context="me.barta.actdrawexplain.menu.DeckSelectActivity">
 
         <TextView
             android:id="@+id/screen_title"

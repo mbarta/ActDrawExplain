@@ -21,6 +21,8 @@ class AttachedViewModelActivity(activity: ViewModelActivity) : AttachedActivity 
 
     override fun startActivity(activityClass: Class<out Activity>) {
         getActivity()?.let {
+//            val activityOptions = ActivityOptions.makeCustomAnimation(it, R.anim.abc_slide_in_bottom, R.anim.abc_fade_out)
+//            it.startActivity(Intent(it, activityClass), activityOptions.toBundle())
             it.startActivity(Intent(it, activityClass))
         }
     }

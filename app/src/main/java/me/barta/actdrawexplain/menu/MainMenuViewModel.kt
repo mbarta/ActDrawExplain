@@ -9,7 +9,7 @@ import me.barta.actdrawexplain.inject.viewmodel.ViewModel
 class MainMenuViewModel(activityComponent: ActivityComponent) : ViewModel(activityComponent) {
 
     fun onPlayClicked() {
-
+        attachedActivity.startActivity(DeckSelectActivity::class.java)
     }
 
     fun onCustomizeDecksClicked() {
