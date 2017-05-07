@@ -1,9 +1,9 @@
-package me.barta.actdrawexplain.inject.viewmodel
+package me.barta.actdrawexplain.common.viewmodel
 
 import android.content.Context
 import android.databinding.BaseObservable
-import me.barta.actdrawexplain.inject.activity.AttachedActivity
-import me.barta.actdrawexplain.inject.inject.ActivityComponent
+import me.barta.actdrawexplain.common.activity.AttachedActivity
+import me.barta.actdrawexplain.common.inject.ActivityComponent
 import javax.inject.Inject
 
 /**

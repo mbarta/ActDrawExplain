@@ -1,8 +1,8 @@
-package me.barta.actdrawexplain.inject
+package me.barta.actdrawexplain.common
 
 import android.content.Context
 import android.support.annotation.CallSuper
-import me.barta.actdrawexplain.inject.activity.AttachedActivity
+import me.barta.actdrawexplain.common.activity.AttachedActivity
 import org.junit.Assert
 import org.junit.Before
 import org.mockito.Mockito

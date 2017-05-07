@@ -1,13 +1,13 @@
-package me.barta.actdrawexplain.inject.activity
+package me.barta.actdrawexplain.common.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import me.barta.actdrawexplain.ActDrawExplainApp
-import me.barta.actdrawexplain.inject.inject.ActivityComponent
-import me.barta.actdrawexplain.inject.inject.ActivityModule
-import me.barta.actdrawexplain.inject.inject.DaggerActivityComponent
-import me.barta.actdrawexplain.inject.viewmodel.ViewModel
+import me.barta.actdrawexplain.common.inject.ActivityComponent
+import me.barta.actdrawexplain.common.inject.ActivityModule
+import me.barta.actdrawexplain.common.inject.DaggerActivityComponent
+import me.barta.actdrawexplain.common.viewmodel.ViewModel
 
 /**
  * Base Activity implementation.

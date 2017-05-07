@@ -1,4 +1,4 @@
-package me.barta.actdrawexplain.inject.inject
+package me.barta.actdrawexplain.common.inject
 
 import javax.inject.Scope
 

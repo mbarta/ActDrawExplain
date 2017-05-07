@@ -1,9 +1,9 @@
-package me.barta.actdrawexplain.inject.inject
+package me.barta.actdrawexplain.common.inject
 
 import android.content.Context
 import dagger.Component
-import me.barta.actdrawexplain.inject.activity.ViewModelActivity
-import me.barta.actdrawexplain.inject.fragment.ViewModelFragment
+import me.barta.actdrawexplain.common.activity.ViewModelActivity
+import me.barta.actdrawexplain.common.fragment.ViewModelFragment
 import me.barta.actdrawexplain.menu.MainMenuActivity
 import javax.inject.Singleton
 

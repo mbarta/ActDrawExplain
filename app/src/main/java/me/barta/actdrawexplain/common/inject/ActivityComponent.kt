@@ -1,7 +1,7 @@
-package me.barta.actdrawexplain.inject.inject
+package me.barta.actdrawexplain.common.inject
 
 import dagger.Component
-import me.barta.actdrawexplain.inject.viewmodel.ViewModel
+import me.barta.actdrawexplain.common.viewmodel.ViewModel
 import me.barta.actdrawexplain.menu.MainMenuViewModel
 
 /**

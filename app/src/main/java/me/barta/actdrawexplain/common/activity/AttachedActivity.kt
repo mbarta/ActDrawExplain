@@ -1,4 +1,4 @@
-package me.barta.actdrawexplain.inject.activity
+package me.barta.actdrawexplain.common.activity
 
 import android.app.Activity
 
