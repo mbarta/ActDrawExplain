@@ -2,7 +2,8 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable name="viewModel" type="me.barta.actdrawexplain.menu.DeckSelectViewModel"/>
@@ -99,7 +100,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginTop="8dp"
-            app:layoutManager="GridLayoutManager"
+            bind:deckAdapter="@{viewModel.deckAdapter}"
             app:layout_constraintBottom_toTopOf="@+id/back"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

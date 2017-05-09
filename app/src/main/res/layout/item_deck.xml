@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--<variable name="viewModel" type="me.barta.actdrawexplain.menu.MainMenuViewModel"/>-->
+        <variable name="viewModel" type="me.barta.actdrawexplain.deckselect.DeckViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
