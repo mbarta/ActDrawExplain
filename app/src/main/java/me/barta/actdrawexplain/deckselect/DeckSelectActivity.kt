@@ -1,10 +1,10 @@
-package me.barta.actdrawexplain.menu
+package me.barta.actdrawexplain.deckselect
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import me.barta.actdrawexplain.R
-import me.barta.actdrawexplain.databinding.ActivityDecksSelectBinding
 import me.barta.actdrawexplain.common.activity.ViewModelActivity
+import me.barta.actdrawexplain.databinding.ActivityDecksSelectBinding
 
 /**
  * Activity for the deck select screen.

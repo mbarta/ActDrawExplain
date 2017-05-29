@@ -20,7 +20,9 @@ class MainMenuViewModelTest : BaseTest() {
     @Test
     fun onPlayClicked_deckSelectionActivityStarts() {
         viewModel.onPlayClicked()
-        // TODO: finish test
+        Mockito.verify(viewModel.gameProvider,
+                Mockito.times(1).description("GameProvider should've created a new game.")
+        ).createNewGame()
     }
 
     @Test

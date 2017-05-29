@@ -31,7 +31,7 @@
         </activity>
 
         <activity
-            android:name=".menu.DeckSelectActivity"
+            android:name=".deckselect.DeckSelectActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme">
         </activity>
