@@ -3,8 +3,7 @@ package me.barta.actdrawexplain.common.inject
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import me.barta.actdrawexplain.datastorage.DefaultStorageManager
-import me.barta.actdrawexplain.datastorage.StorageManager
+import me.barta.actdrawexplain.datastorage.GameProvider
 import javax.inject.Singleton
 
 /**
@@ -23,7 +22,7 @@ class AppModule(val appContext : Context) {
 
     @Singleton
     @Provides
-    fun provideStorageManager() : StorageManager {
-        return DefaultStorageManager(appContext)
+    fun provideGameProvider() : GameProvider {
+        return GameProvider(appContext)
     }
 }

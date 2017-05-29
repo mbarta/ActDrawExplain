@@ -4,7 +4,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import me.barta.actdrawexplain.common.activity.AttachedActivity
-import me.barta.actdrawexplain.datastorage.StorageManager
+import me.barta.actdrawexplain.datastorage.GameProvider
 import org.mockito.Mockito
 import javax.inject.Singleton
 
@@ -19,8 +19,8 @@ class TestModule {
 
     @Provides
     @Singleton
-    fun provideStorageManager() : StorageManager {
-        return Mockito.mock(StorageManager::class.java)
+    fun provideGameProvider() : GameProvider {
+        return Mockito.mock(GameProvider::class.java)
     }
 
     @Provides

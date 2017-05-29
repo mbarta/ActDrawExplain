@@ -3,6 +3,7 @@ package me.barta.actdrawexplain.common
 import android.content.Context
 import android.support.annotation.CallSuper
 import me.barta.actdrawexplain.common.activity.AttachedActivity
+import me.barta.actdrawexplain.datastorage.GameProvider
 import org.junit.Assert
 import org.junit.Before
 import org.mockito.Mockito
@@ -20,6 +21,9 @@ open class BaseTest : Assert() {
     @Inject
     lateinit var attachedActivity: AttachedActivity
 
+    @Inject
+    lateinit var gameProvider: GameProvider
+
     init {
         inject()
     }
@@ -31,6 +35,6 @@ open class BaseTest : Assert() {
     @CallSuper
     @Before
     open fun setup() {
-        Mockito.reset<Any>(appContext, attachedActivity)
+        Mockito.reset<Any>(appContext, attachedActivity, gameProvider)
     }
 }
