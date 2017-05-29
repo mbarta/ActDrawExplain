@@ -4,8 +4,6 @@ import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import io.realm.OrderedRealmCollection
-import io.realm.RealmRecyclerViewAdapter
 import me.barta.actdrawexplain.R
 import me.barta.actdrawexplain.common.inject.ActivityComponent
 import me.barta.actdrawexplain.database.Deck
@@ -16,16 +14,9 @@ import me.barta.actdrawexplain.databinding.ItemDeckBinding
  * RecyclerView Adapter for displaying Decks
  */
 
-class DeckAdapter(data: OrderedRealmCollection<Deck>?, autoUpdate: Boolean, val activityComponent: ActivityComponent) :
-        RealmRecyclerViewAdapter<Deck, DeckViewHolder>(data, autoUpdate) {
+class DeckAdapter(val data: List<Deck>, val activityComponent: ActivityComponent) : RecyclerView.Adapter<DeckViewHolder>() {
 
-    var selectedDecks : BooleanArray = BooleanArray(data?.size ?: 0) { false }
-
-    override fun onBindViewHolder(holder: DeckViewHolder?, position: Int) {
-        getItem(position)?.let {
-            holder?.bind(DeckViewModel(activityComponent, it, this, selectedDecks[position]))
-        }
-    }
+    var selectedDecks : BooleanArray = BooleanArray(data.size) { false }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DeckViewHolder {
         val layoutInflater : LayoutInflater = LayoutInflater.from(parent?.context)
@@ -33,12 +24,20 @@ class DeckAdapter(data: OrderedRealmCollection<Deck>?, autoUpdate: Boolean, val 
         return DeckViewHolder(deckBinding)
     }
 
-    override fun getItemId(index: Int): Long {
-        return getItem(index)?.id ?: -1
+    override fun onBindViewHolder(holder: DeckViewHolder?, position: Int) {
+        getItem(position)?.let {
+            holder?.bind(DeckViewModel(activityComponent, it, this, selectedDecks[position]))
+        }
     }
 
+    fun getItem(position: Int) : Deck? = data.getOrNull(position)
+
+    override fun getItemCount(): Int = data.size
+
+    override fun getItemId(index: Int): Long = getItem(index)?.id ?: -1
+
     fun onCheckChanged(deck: Deck, checked: Boolean) {
-        val idx = data?.indexOf(deck) ?: -1
+        val idx = data.indexOf(deck)
         if (idx in 0..selectedDecks.size-1) {
             selectedDecks[idx] = checked
         }

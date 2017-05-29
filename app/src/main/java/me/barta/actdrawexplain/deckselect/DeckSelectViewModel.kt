@@ -1,11 +1,11 @@
 package me.barta.actdrawexplain.deckselect
 
-import io.realm.Realm
 import me.barta.actdrawexplain.common.inject.ActivityComponent
 import me.barta.actdrawexplain.common.viewmodel.ViewModel
 import me.barta.actdrawexplain.database.Deck
-import me.barta.actdrawexplain.datastorage.StorageManager
-import timber.log.Timber
+import me.barta.actdrawexplain.database.realm.RealmDatabase
+import me.barta.actdrawexplain.datastorage.GameProvider
+import me.barta.actdrawexplain.datastorage.GameSettings
 import javax.inject.Inject
 
 /**
@@ -14,17 +14,14 @@ import javax.inject.Inject
 class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(activityComponent) {
 
     @Inject
-    lateinit var storageManager: StorageManager
+    lateinit var gameProvider: GameProvider
 
     var deckAdapter : DeckAdapter
 
     init {
-        val realm = Realm.getDefaultInstance()
-//        realm.executeTransaction {
-//            it.copyToRealm(Deck(2))
-//        }
-        val deckList = realm.where(Deck::class.java).findAll()
-        deckAdapter = DeckAdapter(deckList, true, activityComponent)
+        val realmDB = RealmDatabase()
+        val deckList : List<Deck> = realmDB.loadAllDecks()
+        deckAdapter = DeckAdapter(deckList, activityComponent)
         deckAdapter.setHasStableIds(true)
     }
 
@@ -37,7 +34,8 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
     }
 
     fun onNextClicked() {
-        Timber.d("Number of selected items: %d", deckAdapter.selectedDecks.count { it })
+        gameProvider.gameSettings?.let { storeSelectedDeckIds(it) }
+        // TODO: move to next screen
     }
 
     fun onSelectAllClicked() {
@@ -52,5 +50,11 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
 
     fun onLanguageSelectClicked() {
         TODO("not implemented")
+    }
+
+    private fun storeSelectedDeckIds(gameSettings: GameSettings) {
+        gameSettings.deckIds = deckAdapter.selectedDecks
+                .filter { it }
+                .mapIndexedNotNull { index, _ -> deckAdapter.getItem(index)?.id }
     }
 }
