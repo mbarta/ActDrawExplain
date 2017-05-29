@@ -1,4 +1,4 @@
-package me.barta.actdrawexplain.datamodel.database
+package me.barta.actdrawexplain.database
 
 import io.realm.RealmObject
 

@@ -6,13 +6,13 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="viewModel" type="me.barta.actdrawexplain.menu.DeckSelectViewModel"/>
+        <variable name="viewModel" type="me.barta.actdrawexplain.deckselect.DeckSelectViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="me.barta.actdrawexplain.menu.DeckSelectActivity">
+        tools:context="me.barta.actdrawexplain.deckselect.DeckSelectActivity">
 
         <TextView
             android:id="@+id/screen_title"
@@ -36,6 +36,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/deck_select_select_all"
+            android:onClick="@{() -> viewModel.onSelectAllClicked()}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/select_none"
             app:layout_constraintTop_toBottomOf="@+id/screen_title" />
@@ -50,6 +51,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/deck_select_select_none"
+            android:onClick="@{() -> viewModel.onSelectNoneClicked()}"
             app:layout_constraintLeft_toRightOf="@+id/select_all"
             app:layout_constraintRight_toLeftOf="@+id/lang_select"
             app:layout_constraintTop_toBottomOf="@+id/screen_title" />
@@ -73,6 +75,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/deck_select_next"
+            android:onClick="@{() -> viewModel.onNextClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/back"
             app:layout_constraintRight_toRightOf="parent" />

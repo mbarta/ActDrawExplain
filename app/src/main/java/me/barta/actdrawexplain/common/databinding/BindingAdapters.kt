@@ -9,7 +9,7 @@ import me.barta.actdrawexplain.deckselect.DeckAdapter
  * Binding adapters for data binding.
  */
 
-@BindingAdapter("bind:deckAdapter")
+@BindingAdapter("deckAdapter")
 fun setDeckItems(recyclerView: RecyclerView, deckAdapter: DeckAdapter) {
     recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 2)
     recyclerView.adapter = deckAdapter

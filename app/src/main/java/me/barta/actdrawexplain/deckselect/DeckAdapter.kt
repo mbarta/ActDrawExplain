@@ -8,8 +8,8 @@ import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 import me.barta.actdrawexplain.R
 import me.barta.actdrawexplain.common.inject.ActivityComponent
+import me.barta.actdrawexplain.database.Deck
 import me.barta.actdrawexplain.databinding.ItemDeckBinding
-import me.barta.actdrawexplain.datamodel.database.Deck
 
 
 /**
@@ -19,9 +19,11 @@ import me.barta.actdrawexplain.datamodel.database.Deck
 class DeckAdapter(data: OrderedRealmCollection<Deck>?, autoUpdate: Boolean, val activityComponent: ActivityComponent) :
         RealmRecyclerViewAdapter<Deck, DeckViewHolder>(data, autoUpdate) {
 
+    var selectedDecks : BooleanArray = BooleanArray(data?.size ?: 0) { false }
+
     override fun onBindViewHolder(holder: DeckViewHolder?, position: Int) {
         getItem(position)?.let {
-            holder?.bind(DeckViewModel(activityComponent, it))
+            holder?.bind(DeckViewModel(activityComponent, it, this, selectedDecks[position]))
         }
     }
 
@@ -31,11 +33,21 @@ class DeckAdapter(data: OrderedRealmCollection<Deck>?, autoUpdate: Boolean, val 
         return DeckViewHolder(deckBinding)
     }
 
+    override fun getItemId(index: Int): Long {
+        return getItem(index)?.id ?: -1
+    }
+
+    fun onCheckChanged(deck: Deck, checked: Boolean) {
+        val idx = data?.indexOf(deck) ?: -1
+        if (idx in 0..selectedDecks.size-1) {
+            selectedDecks[idx] = checked
+        }
+    }
 }
 
 class DeckViewHolder(private val binding: ItemDeckBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(viewModel: DeckViewModel) {
-        binding.viewModel = viewModel
+    fun bind(deckViewModel: DeckViewModel) {
+        binding.viewModel = deckViewModel
         binding.executePendingBindings()
     }
 }

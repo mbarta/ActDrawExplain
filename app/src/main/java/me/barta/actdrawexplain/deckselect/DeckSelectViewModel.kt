@@ -1,11 +1,11 @@
-package me.barta.actdrawexplain.menu
+package me.barta.actdrawexplain.deckselect
 
 import io.realm.Realm
 import me.barta.actdrawexplain.common.inject.ActivityComponent
 import me.barta.actdrawexplain.common.viewmodel.ViewModel
-import me.barta.actdrawexplain.datamodel.database.Deck
+import me.barta.actdrawexplain.database.Deck
 import me.barta.actdrawexplain.datastorage.StorageManager
-import me.barta.actdrawexplain.deckselect.DeckAdapter
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -16,20 +16,20 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
     @Inject
     lateinit var storageManager: StorageManager
 
-    override fun inject() {
-        activityComponent.inject(this)
-    }
+    var deckAdapter : DeckAdapter
 
-    fun getDeckAdapter(): DeckAdapter {
+    init {
         val realm = Realm.getDefaultInstance()
-
 //        realm.executeTransaction {
 //            it.copyToRealm(Deck(2))
 //        }
-
         val deckList = realm.where(Deck::class.java).findAll()
+        deckAdapter = DeckAdapter(deckList, true, activityComponent)
+        deckAdapter.setHasStableIds(true)
+    }
 
-        return DeckAdapter(deckList, true, activityComponent)
+    override fun inject() {
+        activityComponent.inject(this)
     }
 
     fun onBackClicked() {
@@ -37,15 +37,17 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
     }
 
     fun onNextClicked() {
-        TODO("not implemented")
+        Timber.d("Number of selected items: %d", deckAdapter.selectedDecks.count { it })
     }
 
     fun onSelectAllClicked() {
-        TODO("not implemented")
+        deckAdapter.selectedDecks.fill(true)
+        deckAdapter.notifyDataSetChanged()
     }
 
     fun onSelectNoneClicked() {
-        TODO("not implemented")
+        deckAdapter.selectedDecks.fill(false)
+        deckAdapter.notifyDataSetChanged()
     }
 
     fun onLanguageSelectClicked() {
