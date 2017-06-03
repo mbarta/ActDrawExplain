@@ -65,6 +65,16 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    splits {
+        abi {
+            enable true
+            reset()
+
+            include "armeabi-v7a", "x86"
+            universalApk false
+        }
+    }
 }
 
 dependencies {
