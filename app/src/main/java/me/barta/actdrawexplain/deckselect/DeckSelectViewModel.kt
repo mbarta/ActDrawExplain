@@ -2,7 +2,6 @@ package me.barta.actdrawexplain.deckselect
 
 import me.barta.actdrawexplain.common.inject.ActivityComponent
 import me.barta.actdrawexplain.common.viewmodel.ViewModel
-import me.barta.actdrawexplain.database.Deck
 import me.barta.actdrawexplain.database.realm.RealmDatabase
 import me.barta.actdrawexplain.datastorage.GameProvider
 import me.barta.actdrawexplain.datastorage.GameSettings
@@ -11,18 +10,16 @@ import javax.inject.Inject
 /**
  * View model for the deck select screen.
  */
-class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(activityComponent) {
+class DeckSelectViewModel(activityComponent: ActivityComponent, val deckAdapter: DeckAdapter) : ViewModel(activityComponent) {
 
     @Inject
     lateinit var gameProvider: GameProvider
 
-    var deckAdapter : DeckAdapter
+    @Inject
+    lateinit var realmDB: RealmDatabase
 
     init {
-        val realmDB = RealmDatabase()
-        val deckList : List<Deck> = realmDB.loadAllDecks()
-        deckAdapter = DeckAdapter(deckList, activityComponent)
-        deckAdapter.setHasStableIds(true)
+        deckAdapter.data = realmDB.loadAllDecks()
     }
 
     override fun inject() {
@@ -39,13 +36,11 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
     }
 
     fun onSelectAllClicked() {
-        deckAdapter.selectedDecks.fill(true)
-        deckAdapter.notifyDataSetChanged()
+        deckAdapter.selectAllDecks()
     }
 
     fun onSelectNoneClicked() {
-        deckAdapter.selectedDecks.fill(false)
-        deckAdapter.notifyDataSetChanged()
+        deckAdapter.deselectAllDecks()
     }
 
     fun onLanguageSelectClicked() {
@@ -53,8 +48,6 @@ class DeckSelectViewModel(activityComponent: ActivityComponent) : ViewModel(acti
     }
 
     private fun storeSelectedDeckIds(gameSettings: GameSettings) {
-        gameSettings.deckIds = deckAdapter.selectedDecks
-                .filter { it }
-                .mapIndexedNotNull { index, _ -> deckAdapter.getItem(index)?.id }
+        gameSettings.deckIds = deckAdapter.getSelectedDeckIds()
     }
 }

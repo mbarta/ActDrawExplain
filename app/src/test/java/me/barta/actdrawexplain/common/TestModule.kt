@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import me.barta.actdrawexplain.common.activity.AttachedActivity
+import me.barta.actdrawexplain.database.realm.RealmDatabase
 import me.barta.actdrawexplain.datastorage.GameProvider
 import org.mockito.Mockito
 import javax.inject.Singleton
@@ -27,5 +28,11 @@ class TestModule {
     @Singleton
     fun provideAttachedActivity() : AttachedActivity {
         return Mockito.mock(AttachedActivity::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRealmDatabase() : RealmDatabase {
+        return Mockito.mock(RealmDatabase::class.java)
     }
 }

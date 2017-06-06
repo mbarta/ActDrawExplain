@@ -14,9 +14,13 @@ import me.barta.actdrawexplain.databinding.ItemDeckBinding
  * RecyclerView Adapter for displaying Decks
  */
 
-class DeckAdapter(val data: List<Deck>, val activityComponent: ActivityComponent) : RecyclerView.Adapter<DeckViewHolder>() {
+class DeckAdapter(var data: List<Deck>, val activityComponent: ActivityComponent) : RecyclerView.Adapter<DeckViewHolder>() {
 
     var selectedDecks : BooleanArray = BooleanArray(data.size) { false }
+
+    init {
+        setHasStableIds(true)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DeckViewHolder {
         val layoutInflater : LayoutInflater = LayoutInflater.from(parent?.context)
@@ -41,6 +45,22 @@ class DeckAdapter(val data: List<Deck>, val activityComponent: ActivityComponent
         if (idx in 0..selectedDecks.size-1) {
             selectedDecks[idx] = checked
         }
+    }
+
+    fun selectAllDecks() {
+        selectedDecks.fill(true)
+        notifyDataSetChanged()
+    }
+
+    fun deselectAllDecks() {
+        selectedDecks.fill(false)
+        notifyDataSetChanged()
+    }
+
+    fun getSelectedDeckIds(): List<Long> {
+        return selectedDecks
+                .filter { it }
+                .mapIndexedNotNull { index, _ -> getItem(index)?.id }
     }
 }
 

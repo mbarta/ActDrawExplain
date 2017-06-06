@@ -3,6 +3,7 @@ package me.barta.actdrawexplain.common
 import android.content.Context
 import android.support.annotation.CallSuper
 import me.barta.actdrawexplain.common.activity.AttachedActivity
+import me.barta.actdrawexplain.database.realm.RealmDatabase
 import me.barta.actdrawexplain.datastorage.GameProvider
 import org.junit.Assert
 import org.junit.Before
@@ -24,6 +25,9 @@ open class BaseTest : Assert() {
     @Inject
     lateinit var gameProvider: GameProvider
 
+    @Inject
+    lateinit var realmDatabase: RealmDatabase
+
     init {
         inject()
     }
@@ -35,6 +39,6 @@ open class BaseTest : Assert() {
     @CallSuper
     @Before
     open fun setup() {
-        Mockito.reset<Any>(appContext, attachedActivity, gameProvider)
+        Mockito.reset<Any>(appContext, attachedActivity, gameProvider, realmDatabase)
     }
 }

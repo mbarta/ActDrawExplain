@@ -23,6 +23,8 @@ class DeckSelectActivity : ViewModelActivity() {
     }
 
     override fun createViewModel() : DeckSelectViewModel {
-        return DeckSelectViewModel(activityComponent)
+        // Have to create the adapter here as RecyclerView.Adapter cannot be easily mocked:
+        val deckAdapter = DeckAdapter(emptyList(), activityComponent)
+        return DeckSelectViewModel(activityComponent, deckAdapter)
     }
 }

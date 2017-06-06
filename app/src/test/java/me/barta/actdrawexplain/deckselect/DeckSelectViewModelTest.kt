@@ -1,9 +1,12 @@
 package me.barta.actdrawexplain.menu
 
 import me.barta.actdrawexplain.common.BaseTest
+import me.barta.actdrawexplain.database.Deck
+import me.barta.actdrawexplain.deckselect.DeckAdapter
 import me.barta.actdrawexplain.deckselect.DeckSelectViewModel
 import org.junit.Test
 import org.mockito.Mockito
+import org.mockito.Mockito.times
 
 /**
  * Tests for the View model for the main menu screen.
@@ -12,10 +15,13 @@ import org.mockito.Mockito
 class DeckSelectViewModelTest : BaseTest() {
 
     lateinit var viewModel: DeckSelectViewModel
+    val deckAdapter: DeckAdapter = Mockito.mock(DeckAdapter::class.java)
 
     override fun setup() {
         super.setup()
-        viewModel = DeckSelectViewModel(testComponent)
+
+        Mockito.doReturn(emptyList<Deck>()).`when`(realmDatabase).loadAllDecks()
+        viewModel = DeckSelectViewModel(testComponent, deckAdapter)
     }
 
     @Test
@@ -33,13 +39,13 @@ class DeckSelectViewModelTest : BaseTest() {
     @Test
     fun onSelectAllClicked_allDecksSelected() {
         viewModel.onSelectAllClicked()
-        // TODO: finish
+        Mockito.verify(deckAdapter, times(1).description("Adapter's selectAllDecks should've been called")).selectAllDecks()
     }
 
     @Test
     fun onSelectNoneClicked_noDeckSelected() {
         viewModel.onSelectNoneClicked()
-        // TODO: finish
+        Mockito.verify(deckAdapter, times(1).description("Adapter's deselectAllDecks should've been called")).deselectAllDecks()
     }
 
     @Test

@@ -6,8 +6,6 @@ import me.barta.actdrawexplain.database.Deck
 /**
  * Wrapper around Realm database (takes care of closing Realm instances).
  * Only returns unmanaged (detached) objects.
- *
- * // TODO: tests
  */
 
 class RealmDatabase {

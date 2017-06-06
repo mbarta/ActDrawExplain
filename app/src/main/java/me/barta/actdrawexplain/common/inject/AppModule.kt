@@ -3,6 +3,7 @@ package me.barta.actdrawexplain.common.inject
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import me.barta.actdrawexplain.database.realm.RealmDatabase
 import me.barta.actdrawexplain.datastorage.GameProvider
 import javax.inject.Singleton
 
@@ -24,5 +25,11 @@ class AppModule(val appContext : Context) {
     @Provides
     fun provideGameProvider() : GameProvider {
         return GameProvider(appContext)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRealmDatabase() : RealmDatabase {
+        return RealmDatabase()
     }
 }
